@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.30.129:3306/vue-manage?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: LIUjun19941203!
+      driver-class-name: com.mysql.jdbc.Driver
+
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      filters: stat
+      filter:
+        stat:
+          slow-sql-millis: 200
+          log-slow-sql: true
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.gif,*.png,*.jpg,*.html,*.js,*.css,*.ico
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+        allow:
+        deny:
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

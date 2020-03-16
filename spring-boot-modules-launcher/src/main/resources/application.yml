@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: @env@
+ 
+server:
+  port: 19090
+  servlet:
+    context-path: /interface
+#  log:
+#    path: /data/www/wifiin/logs/ws
+#    file-level: debug
+#    console-level: info
