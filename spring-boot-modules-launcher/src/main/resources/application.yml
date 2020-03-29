@@ -1,11 +1,17 @@
 spring:
   profiles:
     active: @env@
- 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
 server:
   port: 19090
   servlet:
     context-path: /interface
+  undertow:
+    worker-threads: 1024
 #  log:
 #    path: /data/www/wifiin/logs/ws
 #    file-level: debug

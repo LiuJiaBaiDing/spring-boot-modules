@@ -4,11 +4,75 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bai.ding.user.dao.UserDAO">
 
-    <select id="getAllUser" resultType="com.bai.ding.user.models.User">
+    <select id="getAllUser" parameterType="com.bai.ding.user.models.condition.UserQueryCondition" resultType="com.bai.ding.user.models.User">
         SELECT * FROM user
+        <where>
+            <if test = "userName != null">
+                AND name like concat('%',#{userName},'%')
+            </if>
+        </where>
+        limit #{start}, #{pageSize}
     </select>
+
+    <select id="getAllUserCount" parameterType="com.bai.ding.user.models.condition.UserQueryCondition" resultType="int">
+        select count(*) from user
+        <where>
+            <if test = "userName != null">
+                AND name like concat('%',#{userName},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="changeUserRemoved" parameterType="com.bai.ding.user.models.User">
+        update user set removed = #{removed} where id = #{id}
+    </update>
+
+    <update id="editUser" parameterType="com.bai.ding.user.models.User">
+        update user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="age != 0">
+                age = #{age},
+            </if>
+            sex = #{sex},
+            removed = #{removed}
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="addUser" parameterType="com.bai.ding.user.models.User">
+        INSERT INTO user(
+            name,
+            password,
+            email,
+            sex,
+            age,
+            removed,
+            register_date
+        )VALUES (
+                    #{name},
+                    #{password},
+                    #{email},
+                    #{sex},
+                    #{age},
+                    #{removed},
+                    #{registerDate}
+                )
+    </insert>
 
     <select id="getUser" parameterType="long" resultType="com.bai.ding.user.models.User">
         SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <delete id="deleteUser">
+        delete from user where id = #{id}
+    </delete>
+    <select id="getUserByNameAndPassword" resultType="com.bai.ding.user.models.User">
+        SELECT id,name,password FROM user WHERE name = #{name} and password = #{password}
     </select>
 </mapper>

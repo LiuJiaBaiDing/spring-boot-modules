@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.ding.goods.dao.GoodsCategoryDao">
+
+    <select id="getGoodsCategoryAll" parameterType="com.bai.ding.goods.models.condition.QueryCategoryCondition"
+            resultType="com.bai.ding.goods.models.GoodsCategory">
+        SELECT * FROM goods_category
+        <where>
+            parent_id = #{parentId}
+            <if test="current != 0">
+                limit #{start}, #{pageSize}
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodsCategoryCount" parameterType="com.bai.ding.goods.models.condition.QueryCategoryCondition"
+            resultType="int">
+        select count(*) from goods_category
+        <where>
+            parent_id = #{parentId}
+        </where>
+    </select>
+
+    <select id="getGoodsCategoryByParentId" parameterType="long"
+            resultType="com.bai.ding.goods.models.GoodsCategory">
+        SELECT * FROM goods_category
+        <where>
+            and parent_id = #{parentId}
+            <if test="type != 0">
+                and category_level &lt;= #{type}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteGoodsCategory">
+        delete from goods_category where id = #{id}
+    </delete>
+
+    <insert id="addGoodsCategory" parameterType="com.bai.ding.goods.models.GoodsCategory">
+        insert into goods_category(
+            category_name,
+            parent_id,
+            category_level,
+            deleted
+        )values(
+            #{categoryName},
+            #{parentId},
+            #{categoryLevel},
+            #{deleted}
+        )
+    </insert>
+
+    <update id="editGoodsCategory" parameterType="com.bai.ding.goods.models.GoodsCategory">
+        update goods_category set category_name = #{categoryName} where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.ding.goods.dao.GoodsDao">
+
+    <select id="getAllGoods"
+            parameterType="com.bai.ding.goods.models.condition.QueryGoodsCondition"
+            resultType="com.bai.ding.goods.models.Goods">
+        SELECT id, category_id, goods_name, goods_price, goods_number, goods_weight, create_time, update_time FROM
+        goods
+        <where>
+            <if test="goodsName != null and goodsName != ''">
+                goods_name like concat('%',#{goodsName},'%')
+            </if>
+        </where>
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="getAllGoodsCount" parameterType="com.bai.ding.goods.models.condition.QueryGoodsCondition"
+            resultType="int">
+        select count(*) FROM
+        goods
+        <where>
+            <if test="goodsName != null and goodsName != ''">
+                goods_name like concat('%',#{goodsName},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--    <insert id="addGoodsCategoryAttribute" parameterType="com.bai.ding.goods.models.GoodsCategoryAttribute">-->
+    <!--        insert into goods_category_attribute-->
+    <!--        (attribute_name,-->
+    <!--         category_id,-->
+    <!--         attribute_sel,-->
+    <!--         attribute_write,-->
+    <!--         attribute_values)-->
+    <!--        values (#{attributeName},-->
+    <!--                #{categoryId},-->
+    <!--                #{attributeSel},-->
+    <!--                #{attributeWrite},-->
+    <!--                #{attributeValues})-->
+    <!--    </insert>-->
+
+    <!--    <update id="editGoodsCategoryAttribute" parameterType="com.bai.ding.goods.models.GoodsCategoryAttribute">-->
+    <!--        update goods_category_attribute-->
+    <!--        <set>-->
+    <!--            <if test="attributeName != null and attributeName != ''">-->
+    <!--                attribute_name = #{attributeName},-->
+    <!--            </if>-->
+    <!--            <if test="attributeValues != null">-->
+    <!--                attribute_values = #{attributeValues}-->
+    <!--            </if>-->
+    <!--        </set>-->
+    <!--        where id = #{id}-->
+    <!--    </update>-->
+
+    <!--    <delete id="deleteGoodsCategoryAttribute" parameterType="long">-->
+    <!--        delete-->
+    <!--        from goods_category_attribute-->
+    <!--        where id = #{id}-->
+    <!--    </delete>-->
+
+    <!--    <select id="getGoodsCategoryCount" parameterType="com.bai.ding.goods.models.condition.QueryCategoryCondition"-->
+    <!--            resultType="int">-->
+    <!--        select count(*) from goods_category-->
+    <!--        <where>-->
+    <!--            parent_id = #{parentId}-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <!--    <select id="getGoodsCategoryByParentId" parameterType="long"-->
+    <!--            resultType="com.bai.ding.goods.models.GoodsCategory">-->
+    <!--        SELECT * FROM goods_category-->
+    <!--        <where>-->
+    <!--            and parent_id = #{parentId}-->
+    <!--            <if test="type != 0">-->
+    <!--                and category_level &lt;= #{type}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <!--    <delete id="deleteGoodsCategory">-->
+    <!--        delete from goods_category where id = #{id}-->
+    <!--    </delete>-->
+
+    <!--    <insert id="addGoodsCategory" parameterType="com.bai.ding.goods.models.GoodsCategory">-->
+    <!--        insert into goods_category(-->
+    <!--            category_name,-->
+    <!--            parent_id,-->
+    <!--            category_level,-->
+    <!--            deleted-->
+    <!--        )values(-->
+    <!--            #{categoryName},-->
+    <!--            #{parentId},-->
+    <!--            #{categoryLevel},-->
+    <!--            #{deleted}-->
+    <!--        )-->
+    <!--    </insert>-->
+
+    <!--    <update id="editGoodsCategory" parameterType="com.bai.ding.goods.models.GoodsCategory">-->
+    <!--        update goods_category set category_name = #{categoryName} where id = #{id}-->
+    <!--    </update>-->
+</mapper>

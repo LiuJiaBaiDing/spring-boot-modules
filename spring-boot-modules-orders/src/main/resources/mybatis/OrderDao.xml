@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bai.ding.orders.dao.OrderDao">
+
+    <select id="getAllOrders"
+            parameterType="com.bai.ding.orders.models.condition.QueryOrdersCondition"
+            resultType="com.bai.ding.orders.models.Order">
+        SELECT id, user_id, order_number, order_price, order_pay, send, trade_no, order_fapiao_title,
+        order_fapiao_company, order_fapiao_content,consignee_addr,pay_status,create_time,update_time FROM
+        orders
+        <where>
+            <if test="orderNumber != null and orderNumber != ''">
+                order_number like concat('%',#{orderNumber},'%')
+            </if>
+        </where>
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="getAllOrdersCount" parameterType="com.bai.ding.orders.models.condition.QueryOrdersCondition"
+            resultType="int">
+        select count(*) FROM
+        orders
+        <where>
+            <if test="orderNumber != null and orderNumber != ''">
+                order_number like concat('%',#{orderNumber},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

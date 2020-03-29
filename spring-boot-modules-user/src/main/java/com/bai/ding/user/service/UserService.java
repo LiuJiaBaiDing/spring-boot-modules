@@ -1,6 +1,9 @@
 package com.bai.ding.user.service;
 
+import com.bai.ding.common.Result;
 import com.bai.ding.user.models.User;
+import com.bai.ding.user.models.condition.UserQueryCondition;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -10,7 +13,15 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<User> getAllUser();
+    Result getAllUser(UserQueryCondition condition);
 
-    User getUser(long id);
+    Result changeUserRemoved(User user);
+
+    Result editUser(User user);
+
+    Result addUser(User user);
+
+    Result getUser(long id);
+
+    Result deleteUser(long id);
 }

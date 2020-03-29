@@ -1,9 +1,6 @@
 package com.bai.ding.common.controller;
 
 import com.bai.ding.common.util.RandomCharTool;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -87,22 +84,22 @@ public class BaseController {
         return response.getOutputStream();
     }
 
-    /**
-     * @param rowNo
-     *            插入的数据的行号
-     * @param vals
-     *            插入的数据值
-     * @return
-     * @throws IOException
-     */
-    public void createExcel(XSSFSheet sheet, int rowNo, String[] vals) throws IOException {
-        if (vals.length > 0) {
-            XSSFRow row = sheet.createRow(rowNo);
-            for (int i = 0; i < vals.length; i++) {
-                String val = vals[i];
-                XSSFCell cell = row.createCell(i);
-                cell.setCellValue(val);
-            }
-        }
-    }
+//    /**
+//     * @param rowNo
+//     *            插入的数据的行号
+//     * @param vals
+//     *            插入的数据值
+//     * @return
+//     * @throws IOException
+//     */
+//    public void createExcel(XSSFSheet sheet, int rowNo, String[] vals) throws IOException {
+//        if (vals.length > 0) {
+//            XSSFRow row = sheet.createRow(rowNo);
+//            for (int i = 0; i < vals.length; i++) {
+//                String val = vals[i];
+//                XSSFCell cell = row.createCell(i);
+//                cell.setCellValue(val);
+//            }
+//        }
+//    }
 }

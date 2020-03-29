@@ -27,6 +27,16 @@
             <artifactId>spring-boot-modules-user</artifactId>
             <version>${app.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.bai.ding</groupId>
+            <artifactId>spring-boot-modules-goods</artifactId>
+            <version>${app.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bai.ding</groupId>
+            <artifactId>spring-boot-modules-orders</artifactId>
+            <version>${app.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

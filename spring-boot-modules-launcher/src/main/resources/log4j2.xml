@@ -31,7 +31,7 @@
         <AsyncRoot level="${sys:server.log.console.level}">
             <appender-ref ref="AsyncConsole"/>
         </AsyncRoot>
-        <AsyncLogger name="com.bai.ding" level="${sys:server.log.file.level}" additivity="false">
+        <AsyncLogger name="com.bai.ding" level="${sys:server.log.file.level}" additivity="true">
             <appender-ref ref="AsyncRollingFile"/>
         </AsyncLogger>
     </Loggers>

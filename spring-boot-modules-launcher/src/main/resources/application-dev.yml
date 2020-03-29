@@ -4,7 +4,7 @@ spring:
       url: jdbc:mysql://localhost:3306/test_jun?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
       username: root
       password: LIUjun19941203
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
       initial-size: 5
       max-active: 20
@@ -37,6 +37,6 @@ spring:
         allow:
         deny:
 mybatis:
-  mapper-locations: classpath:mybatis/*.xml
+  mapper-locations: classpath*:mybatis/*.xml
   configuration:
     map-underscore-to-camel-case: true
