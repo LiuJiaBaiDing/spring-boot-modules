@@ -26,6 +26,7 @@ public class CommonBeans implements WebMvcConfigurer {
         registry.addInterceptor(new JwtInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login")
+                .excludePathPatterns("/redis")
                 .excludePathPatterns("/static/*");;
     }
 

@@ -36,6 +36,19 @@ spring:
         login-password: admin
         allow:
         deny:
+  redis:
+    host: 192.168.30.129
+    port: 6379
+    password: redis033453
+    timeout: 1000ms
+    lettuce:
+      shutdown-timeout: 100ms
+      pool:
+        max-active: 16
+        max-idle: 8
+        max-wait: 1000ms
+        min-idle: 0
+
 mybatis:
   mapper-locations: classpath*:mybatis/*.xml
   configuration:
