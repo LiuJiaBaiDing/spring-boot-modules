@@ -1,9 +1,9 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/test_jun?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://localhost:3306/modules?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
       username: root
-      password: LIUjun19941203
+      password: baiding033453
       driver-class-name: com.mysql.cj.jdbc.Driver
 
       initial-size: 5
@@ -37,9 +37,9 @@ spring:
         allow:
         deny:
   redis:
-    host: 192.168.30.129
+    host: 127.0.0.1
     port: 6379
-    password: redis033453
+    password: LIUjun033453
     timeout: 1000ms
     lettuce:
       shutdown-timeout: 100ms

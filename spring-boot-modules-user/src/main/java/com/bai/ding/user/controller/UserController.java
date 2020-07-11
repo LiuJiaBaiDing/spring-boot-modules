@@ -1,16 +1,11 @@
 package com.bai.ding.user.controller;
 
 import com.bai.ding.common.Result;
-import com.bai.ding.common.constant.BackendModulesConstant;
-import com.bai.ding.user.dao.UserDAO;
 import com.bai.ding.user.models.User;
 import com.bai.ding.user.models.condition.UserQueryCondition;
 import com.bai.ding.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 /**

@@ -5,7 +5,6 @@ import com.bai.ding.user.models.Menu;
 import com.bai.ding.user.models.User;
 import com.bai.ding.user.service.AdminService;
 import com.bai.ding.user.service.MenuService;
-import com.bai.ding.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

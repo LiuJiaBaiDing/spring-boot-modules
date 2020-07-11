@@ -2,7 +2,7 @@
 <Configuration status="INFO" monitorInterval="5">
     <Properties>
         <Property name="server.port">19090</Property>
-        <Property name="server.log.path">/data/www/wifiin/logs/ws</Property>
+        <Property name="server.log.path">/home/jun/local/data/logs</Property>
         <Property name="server.log.console.level">info</Property>
         <Property name="server.log.file.level">debug</Property>
     </Properties>
